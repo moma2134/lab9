@@ -25,8 +25,8 @@ def main():
     setup_vms(conn=conn)
 
     # Perform security setup
-   # print("Setting up security groups...")
-   # setup_security_groups(conn=conn)
+    print("Setting up security groups...")
+    setup_security_groups(conn=conn)
 
 if __name__ == "__main__":
     main()
