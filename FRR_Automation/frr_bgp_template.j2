@@ -1,0 +1,47 @@
+!
+frr version {{ data.frr_version }}
+frr defaults traditional
+
+hostname {{ data.hostname }}
+log syslog informational
+no ipv6 forwarding
+service integrated-vtysh-config
+!
+debug bgp keepalives
+debug bgp updates in
+debug bgp updates out
+!
+router bgp {{ data.as_number }}
+ bgp log-neighbor-changes
+ no bgp network import-check
+ {% for neighbor in data.neighbors %}
+ neighbor {{ neighbor.ip }} remote-as {{ neighbor.remote_as }}
+   neighbor {{ neighbor.ip }} capability dynamic
+   !
+   address-family ipv4 unicast
+   {% for network in neighbor.networks %}
+   network {{ network }}
+   {% endfor %}
+   {% if neighbor.redistribute %}
+   redistribute kernel
+   redistribute connected
+   redistribute static
+   {% endif %}
+   neighbor {{ neighbor.ip }} soft-reconfiguration inbound
+   neighbor {{ neighbor.ip }} prefix-list inputall in
+   neighbor {{ neighbor.ip }} prefix-list outputall out
+   neighbor {{ neighbor.ip }} route-map ALLOW-ALL in
+   neighbor {{ neighbor.ip }} route-map ALLOW-ALL out
+   exit-address-family
+ {% endfor %}
+ exit
+!
+access-list 10 seq 5 permit 0.0.0.0 0.0.0.0
+!
+ip prefix-list inputall seq 5 permit any
+ip prefix-list outputall seq 5 permit any
+!
+route-map ALLOW-ALL permit 10
+exit
+!
+end

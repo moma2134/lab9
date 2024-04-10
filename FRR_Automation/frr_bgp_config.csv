@@ -1,0 +1,2 @@
+﻿hostname,as_number,neighbor_ip,neighbor_remote_as,neighbor_networks,neighbor_redistribute
+Router1,2,10.2.0.1,100,"2.2.2.2/32,10.2.0.0/24,172.24.4.0/24,172.24.4.166/32",true
