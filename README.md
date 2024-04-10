@@ -32,6 +32,19 @@ The screenshots show the output from the python modules that were executed.
 <img width="985" alt="VM able to get to internet" src="https://github.com/moma2134/lab9/assets/127178151/553a36b8-ae38-4c0a-b762-fbfdea2ace8b">
 <img width="565" alt="Host able to ping Floating IP address" src="https://github.com/moma2134/lab9/assets/127178151/39eb5714-6908-497e-a4dc-c1024ffbf950">
 
+The screenshots below show the automation flow of deploying a FRR router. Screenshots shown below are of the Dockerfile, automation code with its output and then the docker container showing the deployed config.
+
+- Dockerfile
+<img width="407" alt="image" src="https://github.com/moma2134/lab9/assets/127178151/8338158e-8d37-4ad2-bc7a-455e6061845f">
+
+- Python output showing container deployment
+<img width="491" alt="image" src="https://github.com/moma2134/lab9/assets/127178151/6198b831-a7b5-4cd3-8161-37db963ba320">
+
+- Docker Container showing the FRR configuration
+<img width="580" alt="image" src="https://github.com/moma2134/lab9/assets/127178151/b9c4b2f8-fbd2-4a81-a6f6-7cb672e4a386">
+
+
+
 
 
 
